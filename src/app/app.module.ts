@@ -15,6 +15,7 @@ import { CountriesComponent } from './countries/countries.component';
 import { SportcountriesComponent } from './sportcountries/sportcountries.component';
 import { TournamentsComponent } from './tournaments/tournaments.component';
 import { EventComponent } from './event/event.component';
+import { MarketComponent } from './market/market.component';
 
 
 @NgModule({
@@ -36,7 +37,9 @@ import { EventComponent } from './event/event.component';
 
     TournamentsComponent,
 
-    EventComponent
+    EventComponent,
+
+    MarketComponent
   ],
   imports: [
     BrowserModule,
