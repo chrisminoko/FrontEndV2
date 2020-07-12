@@ -1,75 +1,133 @@
 <div class="container-y">
     <div class="col-md-12 ">
         <div class="row" style="min-width: 100%!important;border-radius: 0px;">
-            <div class="card text-white bg-cart" style="border-color: transparent; background-color: #2b2b2b;" >
+            <div class="card text-white bg-cart" style="border-color: transparent; background-color: #1e1e1e">
                 <div class="card-header" style="background-color: #643e94;border-radius: 0px;">
                     Bet Slip ({{count}})
-                          <div class="col-md-5">
+                    <div class="col-md-5">
                         <div *ngIf="count >= 1">
-                            <button (click)="clearBetSlip()" style="background-color: transparent; border: none; font-size: 16px;"><span style="font-size: 13px;">Clear</span><i class="fa fa-times"></i></button>
+                          <p>
+                            <button (click)="clearBetSlip()"
+                            style="background-color: transparent; border: none; font-size: 16px;">
+                            <span  style="font-size: 13px; color: white;">Clear</span><i style="color: red;" class="fa fa-times"></i>
+                        </button>
+                          </p>
                         </div>
+                      
                     </div>
                 </div>
-                <div class="card-body  cardn"style="min-width: 100% !important;">
+                <div class="card-body  cardn" style="min-width: 100% !important;">
                     <div *ngIf="count == 0">
-                        <p class="card-text" style="font-size: 13px; margin-top: -10px; "><strong>To place a bet:</strong> Choose the sport, tournament and event that you would like to bet on. Then select a market by clicking the odds that you would like to bet on</p>
+                        <p class="card-text" style="font-size: 13px; margin-top: -10px; "><strong>To place a
+                                bet:</strong> Choose the sport, tournament and event that you would like to bet on. Then
+                            select a market by clicking the odds that you would like to bet on</p>
                     </div>
-                    <!-- <p class="card-text" style="font-size: 13px; margin-top: -10px; "><strong>To place a bet:</strong> Choose the sport, tournament and event that you would like to bet on. Then select a market by clicking the odds that you would like to bet on</p> -->
+
                     <p style="font-size: small; margin-top: -10px;">{{message}}</p>
                     <div *ngFor="let bet of iterm">
+                      
                         <div class="media">
-                            <div class="mw-100 media-body border border-warning " style="margin-top: -25px; margin-bottom: 20px;">
+                            <div class="mw-100 media-body "
+                                style="margin-top: -25px; margin-bottom: 20px;">
+                                <div class="div" style="background-color: #2b2b2b !important; height: 6px !important; margin-top: 7px ; margin-bottom: 7px;">
+                                 
+                                </div>
                                 <div class="row">
                                     <div class="col-md-9">
                                         <p style="font-size: 14px; margin-left: -7px;">
-                                            {{bet.Id}}. {{bet.punterBetSelection}} 
-                                            <!-- {{bet.Id}} -->
+                                            {{bet.Id}}. {{bet.punterBetSelection}}
+
                                         </p>
                                     </div>
-                                      <div class="col-md-3">
-                                        <button (click)="remove(bet)" style="background-color: transparent; color: #d9534f; border: none; font-size: 17px;">
+                                    <div class="col-md-3">
+                                        <button (click)="remove(bet)"
+                                            style="background-color: transparent; color: #d9534f; border: none; font-size: 17px;">
                                             <i class="fa fa-times"></i>
                                         </button>
-                                      </div>
+                                    </div>
                                 </div>
-                                
-                                
-                                <p style="font-size: small;">
-                                    {{bet.punterBetSelection}}
+
+
+                                <p style="font-size: medium;">
+                                    {{bet.punterBetSelection}} 
                                     <br>
                                     {{bet.selectionodds}}
                                     <br>
                                     {{bet.event}}
                                     <br>
-                                    {{bet.TypeofEvent}} 
+                                    {{bet.TypeofEvent}}
                                 </p>
-                                
+                                <hr style="color: white!important;">
+                                <div class="div" style="background-color: white !important; height: 2px !important;">
+                                    
+                                </div>
+                                <div class="row mt-3">
+
+                                    <div class="col-md-1">
+                                        <label  style="font-size: xx-small;" for="inputdefault">Stake</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input  class="form-control" id="inputdefault"
+                                                style="background-color: #2b2b2b; color: aliceblue; border: none !important;  border-radius: 0%;"
+                                                type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1" >
+                                        <label style="color: aliceblue; font-size:xx-small;" for="inputdefault">Potential Payout</label>
+                                    </div>
+
+                                    <div class="col-md-5">
+
+                                        <div class="form-group">
+
+                                            <input  class="form-control" id="inputdefault"
+                                                style="background-color: #2b2b2b; color: aliceblue;  border: none !important; border-radius: 0%;"
+                                                type="number">
+
+                                        </div>
+
+                                    </div>
+                                    
+                                </div>
                             </div>
                         </div>
+                       
+                    </div>
+                    <div *ngIf="count > 0">
+                    <button style="border-radius: 0%;" class="btn btn btn-success  btn-block">BOOK THIS BET</button>
                         
                     </div>
                 </div>
-           
-    
+
+
             </div>
-    
-            <div class="card bg-dark text-white mt-2"  style="min-width: 100%!important;">
-              <img  style="min-width: 100%!important;" class="card-img" src="https://hollywoodmedia.hollywoodbets.net/images/cms/new-website/images/go-back-to-old-website.gif" alt="">
-              <div class="card-img-overlay">
-              </div>
+
+            <div class="card bg-dark text-white mt-2" style="min-width: 100%!important;">
+                <img style="min-width: 100%!important;" class="card-img"
+                    src="https://hollywoodmedia.hollywoodbets.net/images/cms/new-website/images/go-back-to-old-website.gif"
+                    alt="">
+                <div class="card-img-overlay">
+                </div>
             </div>
-    
-            <div class="mt-1" >
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
-                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload FICA</button>
+
+            <div class="mt-1">
+                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Upload
+                    FICA</button>
+                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Sport
+                    Blog</button>
+                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Social
+                    Responsibility</button>
+                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Soccer
+                    Betting News</button>
+                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Winning
+                    Form</button>
+                <button type="button" class="btn btn-primary betButton mt-1" style="min-width:  100%!important;">Horse
+                    Racing Analysis and Tips</button>
+                <button type="button" class="btn btn-primary betButton mt-1"
+                    style="min-width:  100%!important;">Careers</button>
             </div>
-           
+
         </div>
     </div>
 </div>
-  

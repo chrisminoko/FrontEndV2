@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient  } from '@angular/common/http';
-import {BetslipService} from '../betslip.service';
-import { from } from 'rxjs';
+import {BetslipService} from '../Services/betslip.service';
+import {FixturesService} from '../Services/fixtures.service';
+import { from, Observable } from 'rxjs';
+import { bettypes } from '../Models/bettypes';
+
 @Component({
   selector: 'app-fixtures',
   templateUrl: './fixtures.component.html',
@@ -9,9 +12,9 @@ import { from } from 'rxjs';
 })
 export class FixturesComponent implements OnInit {
   public Fixtures :any=[];
- 
+  bettypes: bettypes[];
   
-  constructor(private _httpclient : HttpClient ,private _betSlipService:BetslipService ) { }
+  constructor(private _httpclient : HttpClient ,private _betSlipService:BetslipService , private fixture :FixturesService) { }
 
   ngOnInit(): void {
      
@@ -21,11 +24,20 @@ export class FixturesComponent implements OnInit {
   
         
       })
+
+      this.GetBetypes();
+      
   }
 
   addEventToSlip(event:string,punterchoice:string,odds:number){
     console.log('awere')
     return this._betSlipService.AddToBetSlip(event,punterchoice,odds);
+  }
+
+  GetBetypes(){
+    return this.fixture.getBetTypes(1).subscribe((data:any)=>{
+      this.bettypes=data;
+    })
   }
 
 }

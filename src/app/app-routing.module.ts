@@ -5,7 +5,8 @@ import{MaincontentComponent} from './maincontent/maincontent.component';
 import{CountriesComponent} from './countries/countries.component'
 import {TournamentsComponent} from './tournaments/tournaments.component';
 import {EventComponent} from './event/event.component';
-
+import {BetgamesComponent} from './betgames/betgames.component'
+  import { from } from 'rxjs';
 
 
 const routes: Routes = [
@@ -13,7 +14,9 @@ const routes: Routes = [
   {path : '', redirectTo:'/maincontent',pathMatch:'full'},
   {path : 'countries/:sportId', component:CountriesComponent},
   {path : 'event/:tournamentid', component:EventComponent},
+  {path : 'betgames',component:BetgamesComponent},
   {path : 'tournaments/:sportId/:countryid', component:TournamentsComponent},
+
 ];
 //https://localhost:5001/sporttournament?sportid=3&countryid=2
 @NgModule({

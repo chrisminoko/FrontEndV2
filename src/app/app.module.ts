@@ -16,8 +16,11 @@ import { SportcountriesComponent } from './sportcountries/sportcountries.compone
 import { TournamentsComponent } from './tournaments/tournaments.component';
 import { EventComponent } from './event/event.component';
 import { MarketComponent } from './market/market.component';
-
-
+import { StoreModule } from '@ngrx/store';
+import {reducer} from './store/reducers/countries.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { CountriesEffects } from './store/effects/countries.effects';
+import { BetgamesComponent } from './betgames/betgames.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,14 +42,21 @@ import { MarketComponent } from './market/market.component';
 
     EventComponent,
 
-    MarketComponent
+    MarketComponent,
+
+    BetgamesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     Ng2SearchPipeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot({
+      countries:reducer
+    }),
+    EffectsModule.forRoot([CountriesEffects])
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import{BetslipService} from '../betslip.service';
-import {Betslip} from '../betslip';
+import{BetslipService} from '../Services/betslip.service';
+import {Betslip} from '../Models/betslip';
 import { from } from 'rxjs';
 
 @Component({
@@ -14,6 +14,9 @@ export class BetslipComponent implements OnInit {
   iterm=[];
   count=0;
   message='';
+  finalOdds:number;
+  multiplePayout:number;
+  multipleStake:number;
   ngOnInit(): void {
   this.iterm=this._betSlipService.item;
     
@@ -22,6 +25,10 @@ export class BetslipComponent implements OnInit {
   remove(event:any){
     return this._betSlipService.removeEvent(event)
   }
+
+  onKey(stake: number,odds:number,id:number) {
+    this._betSlipService.calculateBetPayout(stake,odds,id);
+}
 
   ngAfterViewChecked(): void {
     //Called after every check of the component's view. Applies to components only.
@@ -35,5 +42,12 @@ export class BetslipComponent implements OnInit {
     return this._betSlipService.clearBetSlip()
   }
   Bets:Betslip[];
+
+  calculateCostBaseOnPayout(payout:number, odd:number,id:number){
+    this._betSlipService.claculateCostBasedOnPayout(payout,odd,id)
+  }
+  calculatePayout(stake:number,odds:number){
+    return stake*odds;
+  }
 
 }

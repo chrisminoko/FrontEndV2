@@ -1,30 +1,25 @@
 
-
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Countries</th>
-        <th scope="col">ID</th>
-        <th scope="col">Flag</th>
-     
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let country of countries" >
-   
-        <td  style="background-color: #1e1e1e !important;"> <a routerLink="/tournaments/{{sportId}}/{{country.countryid}}" (click)="selectedCountry(country.countryid)" style="background-color: #1e1e1e !important;">
-            {{country.name}}
-          </a>
-        </td>
-        <td  style="background-color: #1e1e1e !important;">
-            <p style="color: wheat !important;">{{country.countryid}}</p>
-        </td>
-        <td  style="background-color: #1e1e1e !important;" > 
-          <img src="https://www.countryflags.io/{{country.flagurl}}/flat/24.png" class="list-group-item"  alt="">
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
+  <div class="row ml-2 ">
+    <div *ngFor="let country of countries$">
+        <a class="text-white">
+            <div class="media ml-1 p-2 mt-1 mb-1"
+                style="background-color: #1e1e1e;border-radius: 5px;min-width: 200px!important;">
+                <a class="d-flex">
+                    <img src="https://www.countryflags.io/{{country.flagurl}}/flat/24.png" alt="">
+                </a>
+                <div class="media-body">
+                  
+                  <a routerLink="/tournaments/{{sportId}}/{{country.countryid}}" (click)="selectedCountry(country.countryid)">
+                    <h5  style="padding-left: 5px !important;" class="text-white">{{country.name}}</h5>
+                  </a>
+                  </div>
+            </div>
+        </a>
+    </div>
+</div>
   
+
+
  
+
+

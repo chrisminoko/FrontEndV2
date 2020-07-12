@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SportsService } from '../sports.service';
+import { SportsService } from '../Services/sports.service';
 import { HttpClient } from '@angular/common/http';
-import {CountriesService} from '../countries.service';
-import { Sports } from '../sport';
+import {CountriesService} from '../Services/countries.service';
+import { Sports } from '../Models/sport';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-sidenav',
